@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+
+
+    </head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <body ng-app="myApp">
+        <!-- load angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.js"></script>
+        <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.js" > </script>
+        <!--        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-sanitize.js"></script>-->
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+        
+
+
+        <!-- load app -->
+        <script src="app.js"></script>
+        
+
+        <!-- load controllers -->
+        <script src="register/registerController.js"></script>
+        <script src="home/homeController.js"></script>
+        <script src="home-login/homeLoginController.js"></script>
+        <script src="search/searchController.js"></script>
+        <script src="about/aboutController.js"></script>
+        <script src="points/pointController.js"></script>
+        <script src="favorites/favorites.js"></script>
+        <script src="restorePassword/restorePasswordController.js"></script>
+
+        <div class="menu"  ng-controller="H_controller">
+            <div ng-model="app">
+                <ul>
+                    <li>
+                        <a href="#home" ng-show="!userconnected">Home</a>
+                    </li>
+                    <li>
+                        <a href="#!login" ng-show="userconnected">Home</a>
+                    </li>
+                    <li>
+                        <a href="#!points">Point of Interests</a>
+                    </li>
+                    <li>
+                        <a href="#!register" ng-show="!userconnected">Register</a>
+                    </li>
+                    <li>
+                        <a href="#!favorites" ng-show="userconnected">Favorites</a>
+                    </li>
+                    <li>
+                        <a href="#!about">About</a>
+                    </li>
+                    <li>
+                        <a ng-show="userconnected" ng-click="logout()">LogOut</a>
+                    </li>
+                    <li id="userheader">
+                        <tr>
+<!--                            <td> Hello </td>-->
+                            <td align="right"  ng-bind="currentuser" color="#bdff96">Hello {{currentuser}}</td>
+                        </tr>
+<!--                        <p id="userheader"ng-bind="currentuser">Hello {{currentuser}}</p>-->
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!--<script src="pages/about/aboutController.js"></script>-->
+        <!--<script src="pages/poi/poiController.js"></script>-->
+
+        <!-- the website -->
+        <!-- menu -->
+
+        <!-- This section changes as the hashbang changes -->
+        <div ng-view></div>
+    </body>
+</html>

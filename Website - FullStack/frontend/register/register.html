@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="register/register.css">
+
+<div ng-controller="registerController" class="container" >
+    <form name="contactForm" novalidate id="contact" method="POST">
+        <br>
+        <h1>Register Form</h1><br>
+        <input id="user" type="text" placeholder="User" name="user" ng-model="container.user" ng-required = "true" ng-minlength = "3" ng-maxlength = "8"  pattern="[a-zA-Z]+" ng-pattern-restrict />
+        <div ng-show="contactForm.user.$touched && contactForm.user.$invalid" >
+            <small style="color: red; display:block;text-align:center">Enter a valid user , only letters , 3-8 letters</small>
+        </div><br><br>
+
+        <input id="password" type="password" placeholder="password" name="password" ng-model="container.password" ng-required = "true" ng-minlength = "5" ng-maxlength = "10" ng-pattern="/^(?=.*[a-z])(?=.*\d)(?=.*[A-Z]).{5,}$/" ng-pattern-restrict />
+        <div ng-show="contactForm.password.$touched && contactForm.password.$invalid" >
+            <small style="color: red; display:block;text-align:center">Enter a valid password ,must include capital letters and numbers, 5-10 letters </small>
+        </div><br><br>
+
+        <input id="email" type="email" placeholder="Email" name="email" ng-model="container.email" ng-required = "true" />
+        <div ng-show="contactForm.email.$touched && contactForm.email.$invalid" >
+            <small style="color: red; display:block;text-align:center">Enter a valid email</small>
+        </div><br><br>
+
+        <input id="firstName" type="text" placeholder="FirstName" name="name" ng-model="container.firstName" ng-required = "true" /><br><br>
+        
+        <input id="lastName" type="text" placeholder="LastName" name="name" ng-model="container.lastName" ng-required = "true" /><br><br>
+        <input id="city" type="text" placeholder="City" name="name" ng-model="container.city" ng-required = "true" /><br><br>
+        
+        <div class="box">
+        <select name="country" id="country" ng-model="container.country" ng-options="item for item in countries.country">
+                <option value="">---Please select country---</option> <!-- not selected / blank option -->
+        </select><br><br>
+        </div>
+        
+        <div class="box">
+            <span>click control from multiple choice </span>
+        <select name="category" id="category" ng-model="container.category" ng-options="c.category for c in categories" multiple>
+        </select><br><br>
+        </div>
+        
+        <div class="box">
+        <select name="questions" id="questions1" ng-model="container.questions1" ng-options="c.question for c in questions">
+                <option value="">---Please select question 1 ---</option> <!-- not selected / blank option -->
+        </select><br><br>
+        </div>
+        
+        <input id="answer1" type="text" placeholder="Answer" name="answer" ng-model="container.answer1" ng-required = "true" /><br><br>
+        
+        <div class="box">
+        <select name="questions" id="questions2" ng-model="container.questions2" ng-options="c.question for c in questions">
+                <option value="">---Please select question 2 ---</option> <!-- not selected / blank option -->
+        </select><br><br>
+        </div>
+        
+        <input id="answer2" type="text" placeholder="Answer" name="answer" ng-model="container.answer2" ng-required = "true" /><br><br>
+        
+        <input type="submit" id="submit" ng-click="submitClick()" value="register" ng-disabled="contactForm.$invalid"/>
+    </form>
+    
+</div>
+
